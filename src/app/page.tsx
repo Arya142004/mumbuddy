@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-
 import {
   Select,
   SelectContent,
@@ -8,9 +7,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { SignInButton } from "@clerk/nextjs";
 import { MapPin, GraduationCap, IndianRupee } from "lucide-react";
 
+
+
 export default function Homepage() {
+ 
   return (
     <div className="flex flex-col min-h-screen bg-background">
       {/* Hero Section */}
@@ -22,7 +25,9 @@ export default function Homepage() {
           Connect with like-minded students and share your living space
         </p>
         <Button size="lg" variant="secondary" className="text-primary">
+          <SignInButton>
           Get Started
+          </SignInButton>
         </Button>
       </section>
 
