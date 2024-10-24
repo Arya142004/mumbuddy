@@ -6,7 +6,7 @@ const agentSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    agentname: {
+    name: {
       type: String,
       required: true,
     },
@@ -14,18 +14,19 @@ const agentSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    agentemail: {
+    clerkId: {
       type: String,
       required: true,
     },
-    agentphone: {
+    email: {
+      type: String,
+      required: true,
+    },
+    phone: {
       type: String,
       required: true,
     },
     agency: {
-      type: String,
-    },
-    agentphoto: {
       type: String,
     },
   },

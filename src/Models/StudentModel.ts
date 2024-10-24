@@ -4,21 +4,27 @@ const studentSchema = new mongoose.Schema(
   {
     role: {
       type: String,
+      default: "student",
       required: true,
     },
-    studentname: {
+    name: {
       type: String,
       required: true,
     },
     userId: {
       type: String,
+      default: () => new mongoose.Types.ObjectId().toString(),
       required: true,
     },
-    studentemail: {
+    clerkId: {
       type: String,
       required: true,
     },
-    studentphone: {
+    email: {
+      type: String,
+      required: true,
+    },
+    phone: {
       type: String,
       required: true,
     },
@@ -30,18 +36,31 @@ const studentSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    preflocation: {
+    preflocation: [
+      {
+        value: String,
+        label: String,
+      },
+    ],
+    profileImage: {
       type: String,
-      required: true,
+      required: false,
     },
-    studentphoto: {
-      type: String,
-    },
-    preferences: [],
+    preferences: [
+      {
+        value: String,
+        label: String,
+      },
+    ],
+    budget: [
+      {
+        value: String,
+        label: String,
+      },
+    ],
   },
   { timestamps: true }
 );
-
 const Student =
   mongoose.models.Student || mongoose.model("Student", studentSchema);
 
