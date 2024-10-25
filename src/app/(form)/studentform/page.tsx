@@ -39,6 +39,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useState } from "react";
 import axios from "axios";
+import router from "next/router";
 
 const formSchema = z.object({
   name: z.string().min(2, "name must be of atleast 2 characters"),

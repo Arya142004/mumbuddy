@@ -8,12 +8,27 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { SignInButton } from "@clerk/nextjs";
+import { auth, currentUser } from "@clerk/nextjs/server";
 import { MapPin, GraduationCap, IndianRupee } from "lucide-react";
+import { redirect } from "next/navigation";
+import Agent from "@/Models/AgentModel";
+import { Connection } from "@/Database/connection";
+import Student from "@/Models/StudentModel";
 
+export default async function Homepage() {
+  const { userId } = auth();
 
+  await Connection();
 
-export default function Homepage() {
- 
+  const studentData = await Student.findOne({ clerkId: userId });
+  const agentdata = await Agent.findOne({ clerkId: userId });
+
+  if (studentData) {
+    redirect("/student/dashboard");
+  } else if (agentdata) {
+    redirect("/agent/dashboard");
+  }
+
   return (
     <div className="flex flex-col min-h-screen bg-background">
       {/* Hero Section */}
@@ -25,9 +40,7 @@ export default function Homepage() {
           Connect with like-minded students and share your living space
         </p>
         <Button size="lg" variant="secondary" className="text-primary">
-          <SignInButton>
-          Get Started
-          </SignInButton>
+          <SignInButton>Get Started</SignInButton>
         </Button>
       </section>
 
